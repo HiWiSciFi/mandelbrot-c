@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <time.h>
+#include <dirent.h>
+#include <sys/stat.h>
 
 #include "types.h"
 #include "config.h"
@@ -14,14 +16,12 @@ void generateImage(int);
 int main() {
 
     parseConfig("mandelbrot.config");
-    initConsts();
 
     printf("Rendering image with following configuration:\n");
     printf("Iterations: %i\n", iterations);
     printf("Resolution: %ix%i\n", imageSize.x, imageSize.y);
     printf("Location: %f:%f\n", location.x, location.y);
     printf("Zoom factor: %f\n", zoom);
-    printf("Output file: %s\n", outputFile);
 
     clock_t t;
     t = clock();
@@ -34,9 +34,20 @@ int main() {
     return 0;
 }
 
+void initConsts(){
+    step = (4.0 / zoom) / imageSize.x;
+    leftUpperCorner.x = location.x - (step * imageSize.x / 2);
+    leftUpperCorner.y = location.y - (step * imageSize.y / 2);
+}
+
+
 void render(){
     //for loop increment number and global zoom update upper left corner
-    generateImage(0);
+    for (int i = 0; i < frames; ++i) {
+        zoom *= zoomSpeed;
+        initConsts();
+        generateImage(i);
+    }
 }
 
 void generateImage(int number) {
@@ -48,7 +59,16 @@ void generateImage(int number) {
             setPixel(img, x, y, getColor(valueAt(coords)));
         }
     }
-    saveImage(img, outputFile);
+    char buffer[sizeof ("renders/outputFile.png") + 10];
+    DIR* dir = opendir("renders");
+    if (dir) {
+        /* Directory exists. */
+        closedir(dir);
+    } else {
+        mkdir("renders", S_IRWXU | S_IRWXG | S_IRWXO);
+    }
+    sprintf (buffer, "renders/outputFile_%i.png", number);
+    saveImage(img, buffer);
     freeImage(img);
 }
 

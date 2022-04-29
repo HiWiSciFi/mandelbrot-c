@@ -5,12 +5,12 @@
 ////////////////////////////////////////////////////////////
 
 #define DEFAULT_ITERATIONS 50
+#define DEFAULT_FRAMES 50
 #define DEFAULT_IMAGE_SIZE { 1000, 1000 }
 
 #define DEFAULT_LOCATION { 0, 0 }
 #define DEFAULT_ZOOM 1.0
-
-#define DEFAULT_OUTPUT_FILE "output.png"
+#define DEFAULT_ZOOM_SPEED 1.1
 
 ////////////////////////////////////////////////////////////
 /// COLORS
@@ -69,22 +69,15 @@ struct color color3 = COLOR_3;
 struct color colorArray[] = COLOR_ARRAY;
 
 int iterations = DEFAULT_ITERATIONS;
+int frames = DEFAULT_FRAMES;
 struct vec2i imageSize = DEFAULT_IMAGE_SIZE;
-
-char* outputFile = DEFAULT_OUTPUT_FILE;
 
 struct vec2d location = DEFAULT_LOCATION;
 double zoom = DEFAULT_ZOOM;
+double zoomSpeed = DEFAULT_ZOOM_SPEED;
 
 double step = 0.0;
 struct vec2d leftUpperCorner = { 0, 0 };
-
-void initConsts() {
-    step = (4.0 / zoom) / imageSize.x;
-
-    leftUpperCorner.x = location.x - (step * imageSize.x / 2);
-    leftUpperCorner.y = location.y - (step * imageSize.y / 2);
-}
 
 
 #include <stdio.h>
