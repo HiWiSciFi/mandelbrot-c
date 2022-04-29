@@ -5,10 +5,10 @@
 ////////////////////////////////////////////////////////////
 
 #define DEFAULT_ITERATIONS 50
-#define DEFAULT_IMAGE_SIZE { 2000, 1000 }
+#define DEFAULT_IMAGE_SIZE { 1000, 1000 }
 
-#define DEFAULT_LOCATION { -0.761574, -0.0847596 }
-#define DEFAULT_ZOOM 625.0
+#define DEFAULT_LOCATION { 0, 0 }
+#define DEFAULT_ZOOM 1.0
 
 #define DEFAULT_OUTPUT_FILE "output.png"
 
@@ -91,11 +91,16 @@ void initConsts() {
 #include <stdlib.h>
 #include <string.h>
 
+#define FAIL_CAST(val,target) printf("Failed to cast \"%s\" to type %s -- falling back to default value...\n", val, target)
+
 void parseConfig(const char* path) {
-    printf("Opening file...");
+    printf("Opening file...\n");
     FILE *fp = fopen(path, "r");
-    if (fp == NULL) return;
-    printf("File opened");
+    if (fp == NULL) {
+        printf("Could not find config file at \"%s\" -> falling back to default values...\n", path);
+        return;
+    }
+    printf("Loading values from config...\n");
 
     char line[1024] = { 0 };
     while (!feof(fp)) {
@@ -115,21 +120,31 @@ void parseConfig(const char* path) {
         strncpy(key, line, pos - line);
         strncpy(val, pos + 1, line + len - offset - pos);
 
-        //printf("%s -> %s\n", key, val);
-        if (key == "iterations") {
-            
-        } else if (key == "imageWidth") {
+        if (strcmp(key, "iterations") == 0) {
+            int v = atoi(val);
+            if (v == 0) FAIL_CAST(val, "int");
+            else iterations = v;
 
-        } else if (key == "imageHeight") {
+        } else if (strcmp(key, "imageWidth") == 0) {
+            int v = atoi(val);
+            if (v == 0) FAIL_CAST(val, "int");
+            else imageSize.x = v;
 
-        } else if (key == "locationX") {
+        } else if (strcmp(key, "imageHeight") == 0) {
+            int v = atoi(val);
+            if (v == 0) FAIL_CAST(val, "int");
+            else imageSize.y = v;
 
-        } else if (key == "locationY") {
+        } else if (strcmp(key, "locationX") == 0) {
+            location.x = atof(val);
 
-        } else if (key == "zoom") {
+        } else if (strcmp(key, "locationY") == 0) {
+            location.y = atof(val);
 
-        } else if (key == "output") {
-
+        } else if (strcmp(key, "zoom") == 0) {
+            double v = atof(val);
+            if (v == 0.0) FAIL_CAST(val, "double non zero");
+            else zoom = v;
         }
     }
 }
