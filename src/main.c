@@ -54,6 +54,7 @@ void render(){
         generateImage(i);
         zoom *= zoomSpeed;
     }
+    printf("\n");
 }
 
 void generateImage(int number) {
