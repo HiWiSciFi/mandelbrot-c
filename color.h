@@ -24,3 +24,5 @@ struct color getColor(int value){
     }
     return result;
 }
+
+
