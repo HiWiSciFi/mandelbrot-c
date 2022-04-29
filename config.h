@@ -9,7 +9,7 @@
 #define COLOR_2 { 255, 255, 255 }
 #define COLOR_3 { 255, 255, 255 }
 
-#define ITERATIONS 30
+#define ITERATIONS 100
 #define IMAGE_SIZE { 100, 100 }
 
 #define LOCATION { 0, 0 }
