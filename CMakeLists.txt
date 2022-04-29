@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(madelbrot_c C)
+project(mandelbrot_c C)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -10,6 +10,6 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-add_executable(madelbrot_c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h)
+add_executable(mandelbrot_c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h)
 
-target_link_libraries(madelbrot_c m)
+target_link_libraries(mandelbrot_c m)
