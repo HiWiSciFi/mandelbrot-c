@@ -20,7 +20,7 @@ int main() {
     struct color* img = createImage(imageSize.x, imageSize.y);
     for (int y = 0; y < imageSize.y; y++) {
         for (int x = 0; x < imageSize.x; x++) {
-            struct vec2d coords = {((double) x / imageSize.x) * 4 - 2, ((double) y / imageSize.y) * 4 - 2};
+            struct vec2d coords = getCoords(x, y);
             setPixel(img, x, y, getColor(valueAt(coords)));
         }
     }
@@ -33,7 +33,8 @@ int main() {
 }
 
 struct vec2d getCoords(int x, int y) {
-    struct vec2d coords = { 0, 0, 0 };
-
+    struct vec2d coords = { 0, 0 };
+    coords.x = leftUpperCorner.x + step * x;
+    coords.y = leftUpperCorner.y + step * y;
     return coords;
 }

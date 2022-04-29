@@ -25,14 +25,14 @@
 // Mode 2 - array mode
 ///
 #define COLOR_ARRAY { \
-    {66, 30, 15},\
-    {25, 7, 26},\
-    {9, 1, 47},\
-    {4, 4, 73},\
-    {0, 7, 100},\
-    {12, 44, 138},\
-    {24, 82, 177},\
-    {57, 125, 209},\
+    {66,  30, 15},\
+    {25,  7, 26},\
+    {9,   1, 47},\
+    {4,   4, 73},\
+    {0,   7, 100},\
+    {12,  44, 138},\
+    {24,  82, 177},\
+    { 57, 125, 209},\
     {134, 181, 229},\
     {211, 236, 248},\
     {241, 233, 191},\
@@ -43,11 +43,11 @@
     {106, 52, 3}\
 }
 
-#define ITERATIONS 30
+#define ITERATIONS 300
 #define IMAGE_SIZE { 2000, 1000 }
 
-#define LOCATION { 0, 0 }
-#define ZOOM 1.0
+#define LOCATION { -0.761574, -0.0847596 }
+#define ZOOM 78125.0
 
 #define OUTPUT_FILE "output.png"
 
@@ -68,13 +68,12 @@ struct vec2i imageSize = IMAGE_SIZE;
 
 struct vec2d location = LOCATION;
 
-struct vec2d step = { 0, 0 };
+double step = 0.0;
 struct vec2d leftUpperCorner = { 0, 0 };
 
 void initConsts() {
-    step.x = (4.0 / ZOOM) / imageSize.x;
-    step.y = (4.0 / ZOOM) / imageSize.y;
+    step = (4.0 / ZOOM) / imageSize.x;
 
-    leftUpperCorner.x = location.x - (step.x * imageSize.x / 2);
-    leftUpperCorner.y = location.y - (step.y * imageSize.y / 2);
+    leftUpperCorner.x = location.x - (step * imageSize.x / 2);
+    leftUpperCorner.y = location.y - (step * imageSize.y / 2);
 }
