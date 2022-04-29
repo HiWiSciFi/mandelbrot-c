@@ -45,7 +45,11 @@ void initConsts(){
 
 void render(){
     //for loop increment number and global zoom update upper left corner
+
     for (int i = 0; i < frames; ++i) {
+        printf("\r%i/%i zoom: %f",i + 1,frames, zoom);
+        fflush(stdout);
+
         initConsts();
         generateImage(i);
         zoom *= zoomSpeed;
