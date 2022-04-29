@@ -3,7 +3,7 @@
 #include "types.h"
 #include "config.h"
 
-struct color hsvToRgb(float h, float s, float v);
+struct color hsvToRgb(float, float, float);
 
 struct color getColor(int value){
     if (value == -1) {
@@ -24,10 +24,10 @@ struct color getColor(int value){
             result.b = (color2.b + (color2.b - color3.b) * r);
         }
         return result;
-    } else if (COLOR_MODE == 1){
+    } else if (COLOR_MODE == 1) {
         float h = (float)(value % REPEAT_AFTER) / REPEAT_AFTER * 360.0f;
         return hsvToRgb(h, HSV_S, HSV_V);
-    }else if (COLOR_MODE == 2){
+    } else if (COLOR_MODE == 2) {
         if (value == 0) {
             struct color black = {0,0,0};
             return black;

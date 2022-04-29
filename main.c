@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "types.h"
+#include "config.h"
 #include "mandelbrot.h"
 #include "color.h"
 #include "imageprocessing.h"
