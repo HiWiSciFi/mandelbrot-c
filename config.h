@@ -5,12 +5,12 @@
 ////////////////////////////////////////////////////////////
 
 #define CENTER_COLOR { 0, 0, 0 }
-#define COLOR_1 { 0, 0, 255 }
-#define COLOR_2 { 255, 255, 255 }
-#define COLOR_3 { 0, 255, 0 }
+#define COLOR_1 { 0, 0, 0 }
+#define COLOR_2 { 0, 255, 0 }
+#define COLOR_3 { 255, 255, 255 }
 
-#define ITERATIONS 100
-#define IMAGE_SIZE { 100, 100 }
+#define ITERATIONS 30
+#define IMAGE_SIZE { 2000, 2000 }
 
 #define LOCATION { 0, 0 }
 #define ZOOM 1.0
