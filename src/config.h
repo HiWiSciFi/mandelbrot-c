@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////
 
 #define DEFAULT_ITERATIONS 50
-#define DEFAULT_FRAMES 50
+#define DEFAULT_FRAMES 1
 #define DEFAULT_IMAGE_SIZE { 1000, 1000 }
 
 #define DEFAULT_LOCATION { 0, 0 }
