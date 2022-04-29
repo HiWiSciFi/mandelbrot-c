@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 #include "types.h"
 #include "config.h"
@@ -22,9 +23,13 @@ int main() {
     printf("Zoom factor: %f\n", zoom);
     printf("Output file: %s\n", outputFile);
 
+    clock_t t;
+    t = clock();
     render();
+    t = clock() - t;
+    double elapsedTime = ((double)t)/CLOCKS_PER_SEC; // in seconds
 
-    printf("Done!");
+    printf("Rendering finished after %f seconds!", elapsedTime);
 
     return 0;
 }
@@ -34,7 +39,7 @@ void render(){
     generateImage(0);
 }
 
-void generateImage(int number){
+void generateImage(int number) {
     struct color* img = createImage(imageSize.x, imageSize.y);
     #pragma omp parallel for
     for (int y = 0; y < imageSize.y; y++) {
