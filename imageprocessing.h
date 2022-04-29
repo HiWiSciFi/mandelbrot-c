@@ -6,7 +6,7 @@
 #include "stb_image/stb_image_write.h"
 
 #define IMG_COMP_COUNT 3
-#define RESOLVE_COORDS(x, y) x + y * imageSize.x
+#define RESOLVE_COORDS(x,y) (x + y * imageSize.x)
 
 struct color* createImage(int width, int height) {
     return malloc((width * height) * sizeof(struct color));

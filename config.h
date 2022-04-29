@@ -10,7 +10,7 @@
 #define COLOR_3 { 255, 255, 255 }
 
 #define ITERATIONS 30
-#define IMAGE_SIZE { 1000, 1000 }
+#define IMAGE_SIZE { 100, 100 }
 
 #define LOCATION { 0, 0 }
 #define ZOOM 1.0
