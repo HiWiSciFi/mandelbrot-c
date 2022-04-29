@@ -6,7 +6,19 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image/stb_image_write.h"
 
-void writeImage() {
-    struct vec2i size = IMAGE_SIZE;
-    stbi_write_png("output.png", size.x, size.y, 3, NULL, size.x * 3);
+#define IMG_COMP_COUNT 3
+#define RESOLVE_COORDS(x, y) x + y * imageSize.x
+
+void setPixel(struct color* imageData, int x, int y, struct color color) {
+    int coords = RESOLVE_COORDS(x, y);
+    imageData[coords] = color;
+}
+
+void writeImage(struct color* imageData) {
+    stbi_write_png(
+            OUTPUT_FILE,
+            imageSize.x, imageSize.y,
+            IMG_COMP_COUNT,
+            NULL,
+            imageSize.x * IMG_COMP_COUNT);
 }
