@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <time.h>
 #include <dirent.h>
-#include <sys/stat.h>
+#ifndef _WIN32
+    #include <sys/stat.h>
+#endif
 
 #include "types.h"
 #include "config.h"
@@ -65,7 +67,11 @@ void generateImage(int number) {
         /* Directory exists. */
         closedir(dir);
     } else {
+#ifdef _WIN32
+        mkdir("renders");
+#else
         mkdir("renders", S_IRWXU | S_IRWXG | S_IRWXO);
+#endif
     }
     sprintf (buffer, "renders/outputFile_%i.png", number);
     saveImage(img, buffer);

@@ -10,6 +10,6 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-add_executable(madelbrot_c main.c imageprocessing.h mandelbrot.h config.h types.h color.h)
+add_executable(madelbrot_c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h)
 
 target_link_libraries(madelbrot_c m)
