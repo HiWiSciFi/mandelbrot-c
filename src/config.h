@@ -18,7 +18,7 @@
 
 #define CENTER_COLOR { 0, 0, 0 }
 
-#define COLOR_MODE 2
+#define COLOR_MODE 1
 ////
 // Mode 0 - Gradient
 ///
@@ -29,7 +29,7 @@
 ////
 // Mode 1 - HSV lsd
 ///
-#define REPEAT_AFTER 10
+#define REPEAT_AFTER 200
 #define HSV_S 1
 #define HSV_V 1
 
