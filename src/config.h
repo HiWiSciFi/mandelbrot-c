@@ -139,6 +139,12 @@ void parseConfig(const char* path) {
             double v = atof(val);
             if (v == 0.0) FAIL_CAST(val, "double non zero");
             else zoom = v;
+
+        } else if (strcmp(key, "zoomSpeed") == 0) {
+            zoomSpeed = atof(val);
+
+        } else if (strcmp(key, "frameCount") == 0) {
+            frames = atoi(val);
         }
     }
 }

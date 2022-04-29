@@ -46,9 +46,9 @@ void initConsts(){
 void render(){
     //for loop increment number and global zoom update upper left corner
     for (int i = 0; i < frames; ++i) {
-        zoom *= zoomSpeed;
         initConsts();
         generateImage(i);
+        zoom *= zoomSpeed;
     }
 }
 
