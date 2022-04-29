@@ -7,6 +7,8 @@
 #include "imageprocessing.h"
 
 struct vec2d getCoords(int, int);
+void render();
+void generateImage(int);
 
 int main() {
 
@@ -20,7 +22,21 @@ int main() {
     printf("Zoom factor: %f\n", zoom);
     printf("Output file: %s\n", outputFile);
 
+    render();
+
+    printf("Done!");
+
+    return 0;
+}
+
+void render(){
+    //for loop increment number and global zoom update upper left corner
+    generateImage(0);
+}
+
+void generateImage(int number){
     struct color* img = createImage(imageSize.x, imageSize.y);
+    #pragma omp parallel for
     for (int y = 0; y < imageSize.y; y++) {
         for (int x = 0; x < imageSize.x; x++) {
             struct vec2d coords = getCoords(x, y);
@@ -29,10 +45,6 @@ int main() {
     }
     saveImage(img, outputFile);
     freeImage(img);
-
-    printf("Done!");
-
-    return 0;
 }
 
 struct vec2d getCoords(int x, int y) {

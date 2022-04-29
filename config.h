@@ -95,6 +95,7 @@ void initConsts() {
 
 void parseConfig(const char* path) {
     printf("Opening file...\n");
+    printf("%s", path);
     FILE *fp = fopen(path, "r");
     if (fp == NULL) {
         printf("Could not find config file at \"%s\" -> falling back to default values...\n", path);
