@@ -3,4 +3,4 @@ project(madelbrot_c C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(madelbrot_c main.c)
+add_executable(madelbrot_c main.c imageprocessing.h mandelbrot.h)
