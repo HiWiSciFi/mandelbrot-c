@@ -10,7 +10,7 @@ double absoluteComplex(struct vec2d z);
 
 int valueAt(struct vec2d c) {
     struct vec2d z = {0, 0};
-    for (int n = 0; n < ITERATIONS; n++) {
+    for (int n = 0; n < iterations; n++) {
         z = addComplex(multiplyComplex(z, z), c);
         if (absoluteComplex(z) > 2.0) return n;
     }

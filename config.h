@@ -4,13 +4,13 @@
 /// CONFIGURATION
 ////////////////////////////////////////////////////////////
 
-#define ITERATIONS 300
-#define IMAGE_SIZE { 2000, 1000 }
+#define DEFAULT_ITERATIONS 50
+#define DEFAULT_IMAGE_SIZE { 2000, 1000 }
 
-#define LOCATION { -0.761574, -0.0847596 }
-#define ZOOM 625.0
+#define DEFAULT_LOCATION { -0.761574, -0.0847596 }
+#define DEFAULT_ZOOM 625.0
 
-#define OUTPUT_FILE "output.png"
+#define DEFAULT_OUTPUT_FILE "output.png"
 
 ////////////////////////////////////////////////////////////
 /// COLORS
@@ -68,16 +68,68 @@ struct color color3 = COLOR_3;
 
 struct color colorArray[] = COLOR_ARRAY;
 
-struct vec2i imageSize = IMAGE_SIZE;
+int iterations = DEFAULT_ITERATIONS;
+struct vec2i imageSize = DEFAULT_IMAGE_SIZE;
 
-struct vec2d location = LOCATION;
+char* outputFile = DEFAULT_OUTPUT_FILE;
+
+struct vec2d location = DEFAULT_LOCATION;
+double zoom = DEFAULT_ZOOM;
 
 double step = 0.0;
 struct vec2d leftUpperCorner = { 0, 0 };
 
 void initConsts() {
-    step = (4.0 / ZOOM) / imageSize.x;
+    step = (4.0 / zoom) / imageSize.x;
 
     leftUpperCorner.x = location.x - (step * imageSize.x / 2);
     leftUpperCorner.y = location.y - (step * imageSize.y / 2);
+}
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void parseConfig(const char* path) {
+    printf("Opening file...");
+    FILE *fp = fopen(path, "r");
+    if (fp == NULL) return;
+    printf("File opened");
+
+    char line[1024] = { 0 };
+    while (!feof(fp)) {
+        memset(line, 0, 1024);
+        fgets(line, 1024, fp);
+        if (line[0] == '#') continue;
+
+        int len = strlen(line);
+        char *pos = strchr(line, ':');
+        if (pos == NULL) continue;
+        char key[64] = { 0 };
+        char val[64] = { 0 };
+
+        int offset = 1;
+        if (line[len - 1] == '\n') offset = 2;
+
+        strncpy(key, line, pos - line);
+        strncpy(val, pos + 1, line + len - offset - pos);
+
+        //printf("%s -> %s\n", key, val);
+        if (key == "iterations") {
+            
+        } else if (key == "imageWidth") {
+
+        } else if (key == "imageHeight") {
+
+        } else if (key == "locationX") {
+
+        } else if (key == "locationY") {
+
+        } else if (key == "zoom") {
+
+        } else if (key == "output") {
+
+        }
+    }
 }

@@ -10,7 +10,7 @@ struct color getColor(int value){
         return centerColor;
     }
     if (COLOR_MODE == 0 || COLOR_MODE > 2) {
-        float r = ((float) (ITERATIONS - value)) / ITERATIONS;
+        float r = ((float) (iterations - value)) / iterations;
         struct color result;
         if (r > 0.5f) {
             r *= 2;

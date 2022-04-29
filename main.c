@@ -10,14 +10,15 @@ struct vec2d getCoords(int, int);
 
 int main() {
 
+    parseConfig("mandelbrot.config");
     initConsts();
 
     printf("Rendering image with following configuration:\n");
-    printf("Iterations: %i\n", ITERATIONS);
+    printf("Iterations: %i\n", iterations);
     printf("Resolution: %ix%i\n", imageSize.x, imageSize.y);
-    printf("Location: %d:%d\n", location.x, location.y);
-    printf("Zoom factor: %d\n", ZOOM);
-    printf("Output file: %s\n", OUTPUT_FILE);
+    printf("Location: %f:%f\n", location.x, location.y);
+    printf("Zoom factor: %f\n", zoom);
+    printf("Output file: %s\n", outputFile);
 
     struct color* img = createImage(imageSize.x, imageSize.y);
     for (int y = 0; y < imageSize.y; y++) {
@@ -26,7 +27,7 @@ int main() {
             setPixel(img, x, y, getColor(valueAt(coords)));
         }
     }
-    saveImage(img, OUTPUT_FILE);
+    saveImage(img, outputFile);
     freeImage(img);
 
     printf("Done!");
