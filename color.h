@@ -2,7 +2,6 @@
 
 #include "types.h"
 #include "config.h"
-#include "stdio.h"
 
 struct color getColor(int value){
     if (value == -1){
