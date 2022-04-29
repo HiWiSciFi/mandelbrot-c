@@ -7,7 +7,7 @@
 #define CENTER_COLOR { 0, 0, 0 }
 #define COLOR_1 { 0, 0, 255 }
 #define COLOR_2 { 255, 255, 255 }
-#define COLOR_3 { 255, 255, 255 }
+#define COLOR_3 { 0, 255, 0 }
 
 #define ITERATIONS 100
 #define IMAGE_SIZE { 100, 100 }
