@@ -44,7 +44,7 @@
 }
 
 #define ITERATIONS 30
-#define IMAGE_SIZE { 2000, 2000 }
+#define IMAGE_SIZE { 2000, 1000 }
 
 #define LOCATION { 0, 0 }
 #define ZOOM 1.0
@@ -67,3 +67,14 @@ struct color colorArray[] = COLOR_ARRAY;
 struct vec2i imageSize = IMAGE_SIZE;
 
 struct vec2d location = LOCATION;
+
+struct vec2d step = { 0, 0 };
+struct vec2d leftUpperCorner = { 0, 0 };
+
+void initConsts() {
+    step.x = (4.0 / ZOOM) / imageSize.x;
+    step.y = (4.0 / ZOOM) / imageSize.y;
+
+    leftUpperCorner.x = location.x - (step.x * imageSize.x / 2);
+    leftUpperCorner.y = location.y - (step.y * imageSize.y / 2);
+}

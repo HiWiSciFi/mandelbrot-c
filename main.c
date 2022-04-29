@@ -4,7 +4,11 @@
 #include "color.h"
 #include "imageprocessing.h"
 
+struct vec2d getCoords(int, int);
+
 int main() {
+
+    initConsts();
 
     printf("Rendering image with following configuration:\n");
     printf("Iterations: %i\n", ITERATIONS);
@@ -26,4 +30,10 @@ int main() {
     printf("Done!");
 
     return 0;
+}
+
+struct vec2d getCoords(int x, int y) {
+    struct vec2d coords = { 0, 0, 0 };
+
+    return coords;
 }
