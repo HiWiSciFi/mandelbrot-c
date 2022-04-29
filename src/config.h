@@ -147,4 +147,5 @@ void parseConfig(const char* path) {
             frames = atoi(val);
         }
     }
+    fclose(fp);
 }

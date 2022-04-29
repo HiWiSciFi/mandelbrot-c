@@ -31,7 +31,7 @@ int main() {
     t = clock() - t;
     double elapsedTime = ((double)t)/CLOCKS_PER_SEC; // in seconds
 
-    printf("Rendering finished after %f seconds!", elapsedTime);
+    printf("\nRendering finished after %f seconds!", elapsedTime);
 
     return 0;
 }
