@@ -41,7 +41,7 @@ void render(){
 
 void generateImage(int number) {
     struct color* img = createImage(imageSize.x, imageSize.y);
-    #pragma omp parallel for
+    #pragma omp parallel for default(none) shared(imageSize, img)
     for (int y = 0; y < imageSize.y; y++) {
         for (int x = 0; x < imageSize.x; x++) {
             struct vec2d coords = getCoords(x, y);
