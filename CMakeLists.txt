@@ -10,6 +10,10 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 add_executable(mandelbrot_c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h)
 
 target_link_libraries(mandelbrot_c m)
