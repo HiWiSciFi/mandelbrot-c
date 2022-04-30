@@ -18,7 +18,7 @@
 
 #define CENTER_COLOR { 0, 0, 0 }
 
-#define COLOR_MODE 1
+#define DEFAULT_COLOR_MODE 1
 ////
 // Mode 0 - Gradient
 ///
@@ -60,6 +60,8 @@
 ////////////////////////////////////////////////////////////
 
 #include "types.h"
+
+int colorMode = DEFAULT_COLOR_MODE;
 
 struct color centerColor = CENTER_COLOR;
 struct color color1 = COLOR_1;
@@ -145,6 +147,10 @@ void parseConfig(const char* path) {
 
         } else if (strcmp(key, "frameCount") == 0) {
             frames = atoi(val);
+
+        } else if (strcmp(key, "colorMode") == 0) {
+            int v = atoi(val);
+            if (v < 0 || v > 2) FAIL_CAST(val, "int [0, 1, 2]");
         }
     }
     fclose(fp);

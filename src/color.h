@@ -10,7 +10,7 @@ struct color getColor(int value){
     if (value == -1) {
         return centerColor;
     }
-    if (COLOR_MODE == 0 || COLOR_MODE > 2) {
+    if (colorMode == 0 || colorMode > 2) {
         float r = ((float) (iterations - value)) / iterations;
         struct color result;
         if (r > 0.5f) {
@@ -25,10 +25,10 @@ struct color getColor(int value){
             result.b = (color2.b + (color2.b - color3.b) * r);
         }
         return result;
-    } else if (COLOR_MODE == 1) {
+    } else if (colorMode == 1) {
         float h = (float)(value % REPEAT_AFTER) / REPEAT_AFTER * 360.0f;
         return hsvToRgb(h, HSV_S, HSV_V);
-    } else if (COLOR_MODE == 2) {
+    } else if (colorMode == 2) {
         if (value == 0) {
             struct color black = {0,0,0};
             return black;

@@ -42,17 +42,22 @@ void initConsts(){
     leftUpperCorner.y = location.y - (step * imageSize.y / 2);
 }
 
-
-void render(){
+void render() {
     //for loop increment number and global zoom update upper left corner
 
+    double est = 0.0;
+    clock_t t;
+
     for (int i = 0; i < frames; ++i) {
-        printf("\r%i/%i zoom: %f",i + 1,frames, zoom);
+        printf("\r%i/%i zoom: %f est: %fs",i + 1,frames, zoom, est);
         fflush(stdout);
 
+        t = clock();
         initConsts();
         generateImage(i);
         zoom *= zoomSpeed;
+        t = clock() - t;
+        est = ((double)t)/CLOCKS_PER_SEC;
     }
     printf("\n");
 }
