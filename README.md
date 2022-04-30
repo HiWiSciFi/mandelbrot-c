@@ -1,5 +1,6 @@
 # Mandelbrot C
-Quick and dirty implementation of a renderer for the Mandelbrot set.
+Quick and dirty implementation of a renderer for the Mandelbrot set. This was made after we realized that C code might be a bit better than the python code we wrote a few days before....
+https://github.com/imurnaili/mandelbrot
 
 ## Quick start
 Download the binaries for your platform or compile directly from source.<br/>
