@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _CONFIG_H
+#define _CONFIG_H
 
 ////////////////////////////////////////////////////////////
 /// CONFIGURATION
@@ -59,26 +60,28 @@
 /// END CONFIGURATION
 ////////////////////////////////////////////////////////////
 
+#endif
+
 #include "types.h"
 
-int colorMode = DEFAULT_COLOR_MODE;
+extern int colorMode;
 
-struct color centerColor = CENTER_COLOR;
-struct color color1 = COLOR_1;
-struct color color2 = COLOR_2;
-struct color color3 = COLOR_3;
+extern struct color centerColor;
+extern struct color color1;
+extern struct color color2;
+extern struct color color3;
 
-struct color colorArray[] = COLOR_ARRAY;
+extern struct color colorArray[16];
 
-int iterations = DEFAULT_ITERATIONS;
-int frames = DEFAULT_FRAMES;
-struct vec2i imageSize = DEFAULT_IMAGE_SIZE;
+extern int iterations;
+extern int frames;
+extern struct vec2i imageSize;
 
-struct vec2d location = DEFAULT_LOCATION;
-double zoom = DEFAULT_ZOOM;
-double zoomSpeed = DEFAULT_ZOOM_SPEED;
+extern struct vec2d location;
+extern double zoom;
+extern double zoomSpeed;
 
-double step = 0.0;
-struct vec2d leftUpperCorner = { 0, 0 };
+extern double step;
+extern struct vec2d leftUpperCorner;
 
 void parseConfig(const char* path);

@@ -14,6 +14,8 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
+include_directories(${PROJECT_SOURCE_DIR})
+
 add_executable(mandelbrot-c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h src/mandelbrot.c src/imageprocessing.c src/color.c src/config.c)
 
 target_link_libraries(mandelbrot-c m)

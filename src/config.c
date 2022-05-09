@@ -4,6 +4,26 @@
 #include <stdlib.h>
 #include <string.h>
 
+int colorMode = DEFAULT_COLOR_MODE;
+
+struct color centerColor = CENTER_COLOR;
+struct color color1 = COLOR_1;
+struct color color2 = COLOR_2;
+struct color color3 = COLOR_3;
+
+struct color colorArray[] = COLOR_ARRAY;
+
+int iterations = DEFAULT_ITERATIONS;
+int frames = DEFAULT_FRAMES;
+struct vec2i imageSize = DEFAULT_IMAGE_SIZE;
+
+struct vec2d location = DEFAULT_LOCATION;
+double zoom = DEFAULT_ZOOM;
+double zoomSpeed = DEFAULT_ZOOM_SPEED;
+
+double step = 0.0;
+struct vec2d leftUpperCorner = { 0, 0 };
+
 #define FAIL_CAST(val,target) printf("Failed to cast \"%s\" to type %s -- falling back to default value...\n", val, target)
 
 void parseConfig(const char* path) {
