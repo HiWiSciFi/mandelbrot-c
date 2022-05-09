@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(mandelbrot_c C)
+project(mandelbrot-c C)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -14,6 +14,6 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-add_executable(mandelbrot_c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h)
+add_executable(mandelbrot-c src/main.c src/imageprocessing.h src/mandelbrot.h src/config.h src/types.h src/color.h src/mandelbrot.c src/imageprocessing.c src/color.c src/config.c)
 
-target_link_libraries(mandelbrot_c m)
+target_link_libraries(mandelbrot-c m)
