@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <time.h>
-#include <dirent.h>
+#include "cp_dirent.h"
 #ifndef _WIN32
     #include <sys/stat.h>
 #endif
@@ -64,8 +64,9 @@ void render() {
 
 void generateImage(int number) {
     struct color* img = createImage(imageSize.x, imageSize.y);
+    int y;
     #pragma omp parallel for default(none) shared(imageSize, img) schedule(dynamic, 1)
-    for (int y = 0; y < imageSize.y; y++) {
+    for (y = 0; y < imageSize.y; y++) {
         for (int x = 0; x < imageSize.x; x++) {
             struct vec2d coords = getCoords(x, y);
             setPixel(img, x, y, getColor(valueAt(coords)));

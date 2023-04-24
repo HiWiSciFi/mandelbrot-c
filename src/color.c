@@ -32,6 +32,8 @@ struct color getColor(int value){
         int index = value % sizeof (colorArray) / sizeof (struct color);
         return colorArray[index];
     }
+    struct color defaultColor = { 0, 0, 0 };
+    return defaultColor;
 }
 
 struct color hsvToRgb(float h, float s, float v) {
