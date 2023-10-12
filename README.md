@@ -1,3 +1,5 @@
+# New CPP Version of this Repo
+Through our journey of trying different languages and environments we settled on a realtime Mandelbrot Set renderer in C++. You can find the application [here](https://github.com/imurnaili/mandelbrot-cpp).
 # Mandelbrot C
 Quick and dirty implementation of a renderer for the Mandelbrot set. This was made after we realized that C code might be a bit better than the python code we wrote a few days before....
 https://github.com/imurnaili/mandelbrot
